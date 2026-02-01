@@ -1,48 +1,272 @@
 import BookingSection from '../components/BookingSection';
+import Image from 'next/image';
+import { Check, Info, Shield, Truck, Wind, Droplets, Zap, Coffee, Tent, Music, Wifi } from 'lucide-react';
 
 export default function Home() {
     return (
         <main className="min-h-screen bg-gray-50 text-gray-800 font-sans">
             {/* Hero Section */}
-            <header className="bg-blue-900 text-white py-20 px-4 text-center">
-                <h1 className="text-4xl md:text-6xl font-bold mb-4">Půjčovna Karavanu</h1>
-                <p className="text-xl md:text-2xl opacity-90 mb-8">
-                    Zažijte svobodu na cestách s naším komfortním karavanem.
-                </p>
-                <a
-                    href="#rezervace"
-                    className="inline-block bg-yellow-500 hover:bg-yellow-400 text-blue-900 font-bold py-3 px-8 rounded-full transition"
-                >
-                    Rezervovat termín
-                </a>
+            <header className="relative bg-gray-900 text-white py-32 px-4 text-center overflow-hidden">
+                <div className="absolute inset-0 z-0 opacity-60">
+                    <Image
+                        src="/images/outside-priroda-na-vysku.jpeg"
+                        alt="Rimor EVO 69 Plus v přírodě"
+                        fill
+                        className="object-cover"
+                        priority
+                    />
+                </div>
+                <div className="relative z-10 max-w-4xl mx-auto">
+                    <h1 className="text-4xl md:text-7xl font-bold mb-6 drop-shadow-lg">
+                        Rimor EVO 69 Plus
+                    </h1>
+                    <p className="text-xl md:text-3xl mb-10 drop-shadow-md">
+                        Váš domov na kolech pro nezapomenutelné zážitky.
+                    </p>
+                    <a
+                        href="#rezervace"
+                        className="inline-block bg-yellow-500 hover:bg-yellow-400 text-gray-900 font-bold py-4 px-10 rounded-full transition shadow-lg text-lg transform hover:scale-105"
+                    >
+                        Rezervovat termín
+                    </a>
+                </div>
             </header>
 
-            {/* Info Section */}
-            <section className="py-16 px-4 max-w-4xl mx-auto text-center">
-                <h2 className="text-3xl font-bold mb-8">O karavanu</h2>
-                <div className="grid md:grid-cols-3 gap-8 text-left">
-                    <div className="bg-white p-6 rounded shadow-sm">
-                        <h3 className="font-bold text-lg mb-2">Komfort</h3>
-                        <p>Plně vybavená kuchyňka, pohodlné spaní pro 4 osoby, vlastní sprcha a toaleta.</p>
+            {/* Info Section - Technical & Equippment */}
+            <section className="py-20 px-4 max-w-7xl mx-auto">
+                <div className="grid md:grid-cols-2 gap-16 items-start">
+
+                    {/* Technical Specs */}
+                    <div>
+                        <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
+                            <Truck className="w-8 h-8 text-blue-600" /> Technické parametry
+                        </h2>
+                        <div className="bg-white p-8 rounded-2xl shadow-sm space-y-4">
+                            <div className="flex justify-between border-b pb-2">
+                                <span className="text-gray-600">Vozidlo</span>
+                                <span className="font-semibold">Rimor EVO 69 Plus (2023)</span>
+                            </div>
+                            <div className="flex justify-between border-b pb-2">
+                                <span className="text-gray-600">Motor</span>
+                                <span className="font-semibold">2.0L, 170 koní (125 kW)</span>
+                            </div>
+                            <div className="flex justify-between border-b pb-2">
+                                <span className="text-gray-600">Převodovka</span>
+                                <span className="font-semibold">Manuální</span>
+                            </div>
+                            <div className="flex justify-between border-b pb-2">
+                                <span className="text-gray-600">Kapacita</span>
+                                <span className="font-semibold">5 na jízdu / 5 na spaní</span>
+                            </div>
+                            <div className="flex justify-between border-b pb-2">
+                                <span className="text-gray-600">Řidičák</span>
+                                <span className="font-semibold">Skupina B (do 3.5t)</span>
+                            </div>
+                            <div className="text-sm text-gray-500 mt-4">
+                                <p>Emisní norma EURO 6, dálniční známka v ceně.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div className="bg-white p-6 rounded shadow-sm">
-                        <h3 className="font-bold text-lg mb-2">Nezávislost</h3>
-                        <p>Solární panely a velká nádrž na vodu vám umožní kempovat i mimo kempy.</p>
+
+                    {/* Equipment Highlights */}
+                    <div>
+                        <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
+                            <Shield className="w-8 h-8 text-green-600" /> Výbava & Komfort
+                        </h2>
+                        <div className="grid grid-cols-1 gap-4">
+                            <div className="flex items-start gap-4">
+                                <div className="bg-green-100 p-3 rounded-full"><Wind className="w-6 h-6 text-green-600" /></div>
+                                <div>
+                                    <h3 className="font-bold">Klimatizace & Topení</h3>
+                                    <p className="text-sm text-gray-600">Motorová klimatizace, nezávislé topení, 3kW nástavbová klimatizace.</p>
+                                </div>
+                            </div>
+                            <div className="flex items-start gap-4">
+                                <div className="bg-blue-100 p-3 rounded-full"><Droplets className="w-6 h-6 text-blue-600" /></div>
+                                <div>
+                                    <h3 className="font-bold">Voda & Hygiena</h3>
+                                    <p className="text-sm text-gray-600">Samostatná sprcha, chemické WC, ohřev vody, velká nádrž.</p>
+                                </div>
+                            </div>
+                            <div className="flex items-start gap-4">
+                                <div className="bg-yellow-100 p-3 rounded-full"><Zap className="w-6 h-6 text-yellow-600" /></div>
+                                <div>
+                                    <h3 className="font-bold">Energie & Nezávislost</h3>
+                                    <p className="text-sm text-gray-600">Solární panel pro dobíjení baterie, možnost kempování "na divoko".</p>
+                                </div>
+                            </div>
+                            <div className="flex items-start gap-4">
+                                <div className="bg-purple-100 p-3 rounded-full"><Tent className="w-6 h-6 text-purple-600" /></div>
+                                <div>
+                                    <h3 className="font-bold">Extra výbava</h3>
+                                    <p className="text-sm text-gray-600">Markýza 4m, nosič na 4 kola, couvací kamera, kempingový nábytek.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div className="bg-white p-6 rounded shadow-sm">
-                        <h3 className="font-bold text-lg mb-2">Výbava</h3>
-                        <p>V ceně je i nosič na kola, kempingový nábytek a základní nádobí.</p>
+                </div>
+            </section>
+
+            {/* Gallery Section */}
+            <section className="bg-white py-20 px-4">
+                <div className="max-w-7xl mx-auto">
+                    <h2 className="text-3xl font-bold mb-12 text-center">Galerie vozu</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div className="relative h-64 rounded-xl overflow-hidden shadow-md group">
+                            <Image src="/images/outside-u-vody.jpeg" alt="Exteriér u vody" fill className="object-cover transition duration-300 group-hover:scale-110" />
+                        </div>
+                        <div className="relative h-64 rounded-xl overflow-hidden shadow-md group">
+                            <Image src="/images/sezeni.jpeg" alt="Interiér sezení" fill className="object-cover transition duration-300 group-hover:scale-110" />
+                        </div>
+                        <div className="relative h-64 rounded-xl overflow-hidden shadow-md group">
+                            <Image src="/images/kuchynka.jpeg" alt="Kuchyňka" fill className="object-cover transition duration-300 group-hover:scale-110" />
+                        </div>
+                        <div className="relative h-64 rounded-xl overflow-hidden shadow-md group">
+                            <Image src="/images/loznice.jpeg" alt="Hlavní spaní" fill className="object-cover transition duration-300 group-hover:scale-110" />
+                        </div>
+                        <div className="relative h-64 rounded-xl overflow-hidden shadow-md group">
+                            <Image src="/images/koupelna.jpeg" alt="Koupelna" fill className="object-cover transition duration-300 group-hover:scale-110" />
+                        </div>
+                        <div className="relative h-64 rounded-xl overflow-hidden shadow-md group">
+                            <Image src="/images/outside-parkoviste.jpeg" alt="Boční pohled" fill className="object-cover transition duration-300 group-hover:scale-110" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Pricing Section */}
+            <section className="py-20 px-4 max-w-6xl mx-auto">
+                <div className="text-center mb-16">
+                    <h2 className="text-3xl font-bold mb-4">Ceník pronájmu</h2>
+                    <p className="text-gray-600 max-w-2xl mx-auto">
+                        Transparentní ceny bez skrytých poplatků. Vratná kauce 30 000 Kč se platí týden předem.
+                    </p>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-12">
+                    {/* Season table */}
+                    <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
+                        <div className="bg-blue-600 text-white p-6 text-center">
+                            <h3 className="text-xl font-bold">Ceny dle sezóny</h3>
+                        </div>
+                        <div className="p-6">
+                            <table className="w-full text-left">
+                                <thead>
+                                    <tr className="border-b text-sm text-gray-500">
+                                        <th className="py-2 font-medium">Období</th>
+                                        <th className="py-2 font-medium text-right">Cena / noc</th>
+                                        <th className="py-2 font-medium text-right">Min. dní</th>
+                                    </tr>
+                                </thead>
+                                <tbody className="divide-y text-gray-700">
+                                    <tr>
+                                        <td className="py-4">Leden – Březen</td>
+                                        <td className="py-4 text-right font-bold">3 000 Kč</td>
+                                        <td className="py-4 text-right">3</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="py-4">Duben – Květen</td>
+                                        <td className="py-4 text-right font-bold">3 200 Kč</td>
+                                        <td className="py-4 text-right">3</td>
+                                    </tr>
+                                    <tr className="bg-yellow-50">
+                                        <td className="py-4 font-semibold text-blue-900">Červen – Září</td>
+                                        <td className="py-4 text-right font-bold text-blue-900">3 900 Kč</td>
+                                        <td className="py-4 text-right">7</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="py-4">Říjen – Prosinec</td>
+                                        <td className="py-4 text-right font-bold">2 800 Kč</td>
+                                        <td className="py-4 text-right">3</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div className="mt-6 text-xs text-gray-500 bg-gray-50 p-4 rounded">
+                                <p><strong>Limit km:</strong> 1 500 km / týden (nadlimit 10 Kč/km).</p>
+                                <p className="mt-1"><strong>Sleva:</strong> 10 % při pronájmu nad 10 dní.</p>
+                                <p className="mt-1"><strong>Servisní poplatek:</strong> 1 500 Kč (jednorázově).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Accessories */}
+                    <div>
+                        <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
+                            <Coffee className="w-6 h-6 text-gray-700" /> Doplňkové příslušenství
+                        </h3>
+                        <ul className="space-y-3 text-sm text-gray-700">
+                            <li className="flex justify-between border-b border-dashed pb-2">
+                                <span>Skútr Honda PCX 125</span>
+                                <span className="font-semibold">600 Kč / den</span>
+                            </li>
+                            <li className="flex justify-between border-b border-dashed pb-2">
+                                <span>Skříňový přívěs</span>
+                                <span className="font-semibold">500 Kč / den</span>
+                            </li>
+                            <li className="flex justify-between border-b border-dashed pb-2">
+                                <span>Elektrokolo (ks)</span>
+                                <span className="font-semibold">400 Kč / den</span>
+                            </li>
+                            <li className="flex justify-between border-b border-dashed pb-2">
+                                <span>Elektrokoloběžka (ks)</span>
+                                <span className="font-semibold">200 Kč / den</span>
+                            </li>
+                            <li className="flex justify-between border-b border-dashed pb-2">
+                                <span>Elektrocentrála 3kW</span>
+                                <span className="font-semibold">200 Kč / den</span>
+                            </li>
+                            <li className="flex justify-between border-b border-dashed pb-2">
+                                <span>Gril / Projektor</span>
+                                <span className="font-semibold">od 100 Kč / den</span>
+                            </li>
+                        </ul>
+                        <div className="mt-6 bg-blue-50 p-4 rounded-xl text-blue-800 text-sm">
+                            <p className="font-bold mb-1">Sleva na příslušenství:</p>
+                            <ul className="list-disc pl-5">
+                                <li>3–10 dní: <strong>-20 %</strong></li>
+                                <li>10+ dní: <strong>-30 %</strong></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </section>
 
             {/* Booking Section */}
-            <BookingSection />
+            <div id="rezervace">
+                <BookingSection />
+            </div>
 
             {/* Footer */}
-            <footer className="bg-gray-800 text-white py-8 text-center mt-12">
-                <p>&copy; {new Date().getFullYear()} Půjčovna Karavanu. Všechna práva vyhrazena.</p>
-                <p className="text-sm opacity-60 mt-2">vytvořeno jako MVP demo</p>
+            <footer className="bg-gray-900 text-gray-300 py-12 px-4 mt-12 border-t border-gray-800">
+                <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+                    <div>
+                        <h3 className="text-white font-bold text-lg mb-4">O Půjčovně</h3>
+                        <p className="text-sm opacity-80 leading-relaxed">
+                            Nabízíme zánovní obytný vůz Rimor EVO 69 Plus pro vaše cesty po Evropě.
+                            Férové jednání, žádné skryté poplatky a plná výbava na cesty.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 className="text-white font-bold text-lg mb-4">Kontakt</h3>
+                        <ul className="space-y-2 text-sm">
+                            <li>Petr Panýrek</li>
+                            <li>Telefon: +420 123 456 789</li>
+                            <li>Email: info@karavan-panyrek.cz</li>
+                            <li>Lokace: Praha / Střední Čechy</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 className="text-white font-bold text-lg mb-4">Rychlé odkazy</h3>
+                        <ul className="space-y-2 text-sm">
+                            <li><a href="#" className="hover:text-white transition">Domů</a></li>
+                            <li><a href="#rezervace" className="hover:text-white transition">Rezervovat</a></li>
+                            <li><a href="#" className="hover:text-white transition">Všeobecné podmínky</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div className="text-center mt-12 pt-8 border-t border-gray-800 text-xs opacity-50">
+                    &copy; {new Date().getFullYear()} Půjčovna Karavanu. Všechna práva vyhrazena.
+                </div>
             </footer>
         </main>
     );
