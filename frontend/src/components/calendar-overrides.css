@@ -1,0 +1,54 @@
+/* Basic overrides for react-calendar to look modern */
+.react-calendar {
+  width: 100%;
+  background: white;
+  font-family: inherit;
+  line-height: 1.125em;
+}
+
+.react-calendar--selectRange .react-calendar__tile--hover {
+  background-color: #e6e6e6;
+}
+
+.react-calendar__tile--range {
+  background: #bfdbfe;
+  color: #1e40af;
+  border-radius: 0;
+}
+
+.react-calendar__tile--rangeStart {
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  background: #2563eb;
+  color: white;
+}
+
+.react-calendar__tile--rangeEnd {
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  background: #2563eb;
+  color: white;
+}
+
+/* Disabled tiles (booked) */
+.react-calendar__tile:disabled {
+  background-color: #fca5a5;
+  color: #7f1d1d;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* React Calendar generic styles adjustments */
+.react-calendar__navigation button {
+  min-width: 44px;
+  background: none;
+  font-size: 16px;
+  margin-top: 8px;
+}
+.react-calendar__navigation button:enabled:hover,
+.react-calendar__navigation button:enabled:focus {
+  background-color: #f3f4f6;
+}
+.react-calendar__month-view__days__day--weekend {
+  color: #ef4444;
+}
