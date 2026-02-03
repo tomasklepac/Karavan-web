@@ -13,6 +13,7 @@ export default function BookingSection() {
     const [dateRange, setDateRange] = useState<[Date, Date] | null>(null);
     const [showForm, setShowForm] = useState(false);
     const [loading, setLoading] = useState(true);
+    const [showSuccess, setShowSuccess] = useState(false);
 
     const fetchReservations = async () => {
         try {
@@ -34,13 +35,27 @@ export default function BookingSection() {
         // Disable past dates
         if (date < startOfDay(new Date())) return true;
 
-        // Disable booked dates
-        return reservations.some(res =>
-            isWithinInterval(date, {
-                start: parseISO(res.from),
-                end: new Date(parseISO(res.to).getTime() - 1) // '[)' interval logic
-            })
+        const checkDate = startOfDay(date);
+
+        // Check if this date is a start date of any reservation
+        const isStartDate = reservations.some(res =>
+            startOfDay(parseISO(res.from)).getTime() === checkDate.getTime()
         );
+
+        // Check if this date is an end date of any reservation
+        const isEndDate = reservations.some(res =>
+            startOfDay(parseISO(res.to)).getTime() === checkDate.getTime()
+        );
+
+        // Block if date is BOTH start AND end (different reservations on same day)
+        if (isStartDate && isEndDate) return true;
+
+        // Block middle days (between start and end of same reservation)
+        return reservations.some(res => {
+            const start = startOfDay(parseISO(res.from));
+            const end = startOfDay(parseISO(res.to));
+            return checkDate > start && checkDate < end;
+        });
     };
 
     const handleDateChange = (value: any) => {
@@ -83,10 +98,12 @@ export default function BookingSection() {
                                 from={dateRange[0]}
                                 to={dateRange[1]}
                                 onSuccess={() => {
-                                    alert('Rezervace byla úspěšně vytvořena! Čekejte na potvrzení.');
+                                    setShowSuccess(true);
                                     setShowForm(false);
                                     setDateRange(null);
                                     fetchReservations();
+                                    // Auto-hide after 5 seconds
+                                    setTimeout(() => setShowSuccess(false), 5000);
                                 }}
                                 onCancel={() => setShowForm(false)}
                             />
@@ -95,6 +112,28 @@ export default function BookingSection() {
                                 <p>Pro vytvoření rezervace vyberte volný termín v kalendáři vlevo.</p>
                             </div>
                         )}
+                    </div>
+                </div>
+            )}
+
+            {/* Success Modal */}
+            {showSuccess && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" onClick={() => setShowSuccess(false)}>
+                    <div className="bg-white rounded-lg p-8 max-w-md mx-4 text-center shadow-xl" onClick={(e) => e.stopPropagation()}>
+                        <div className="mb-4">
+                            <svg className="mx-auto h-16 w-16 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 className="text-2xl font-bold text-gray-900 mb-2">Úspěch!</h3>
+                        <p className="text-gray-600 mb-4">Rezervace byla úspěšně odeslána.</p>
+                        <p className="text-sm text-gray-500">Brzy Vás budeme kontaktovat s dalšími informacemi.</p>
+                        <button
+                            onClick={() => setShowSuccess(false)}
+                            className="mt-6 px-6 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
+                        >
+                            Zavřít
+                        </button>
                     </div>
                 </div>
             )}

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Reservation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ReservationReceived;
+use App\Mail\NewReservationAdmin;
 use Carbon\Carbon;
 
 class ReservationController extends Controller
@@ -36,14 +39,32 @@ class ReservationController extends Controller
             'note' => 'nullable|string',
         ]);
 
-        $newFrom = Carbon::parse($validated['from']);
-        $newTo = Carbon::parse($validated['to']);
+        // Parse dates at noon to avoid timezone issues
+        $newFrom = Carbon::parse($validated['from'])->setTime(12, 0, 0);
+        $newTo = Carbon::parse($validated['to'])->setTime(12, 0, 0);
+        
+        // Validate minimum reservation length
+        $nights = $newFrom->diffInDays($newTo);
+        $startMonth = $newFrom->month;
+        $isSummer = $startMonth >= 6 && $startMonth <= 9; // June-September
+        $minNights = $isSummer ? 7 : 3;
+        
+        if ($nights < $minNights) {
+            return response()->json([
+                'message' => "Minimální délka rezervace je {$minNights} " . ($minNights === 3 ? 'noci' : 'nocí') . ($isSummer ? ' (červen-září)' : '') . '.',
+                'error' => 'minimum_length_not_met'
+            ], 422);
+        }
 
-        // Collision Check:
-        // (newFrom < existingTo) AND (newTo > existingFrom)
-        // against PENDING or CONFIRMED
+        // Collision Check with same-day handover support:
+        // Allow: reservation ending on 16th + reservation starting on 16th
+        // Block only if ranges actually overlap (not just touch at boundaries)
+        // New: 10-16, Existing: 16-20 → NO collision (16 is handover day)
+        // New: 10-17, Existing: 16-20 → COLLISION (17 overlaps with 16-20)
         $collision = Reservation::whereIn('status', ['PENDING', 'CONFIRMED'])
             ->where(function ($query) use ($newFrom, $newTo) {
+                // Check if new reservation's range overlaps with existing
+                // Overlap exists if: newFrom < existingTo AND newTo > existingFrom
                 $query->where('to', '>', $newFrom)
                       ->where('from', '<', $newTo);
             })
@@ -65,6 +86,19 @@ class ReservationController extends Controller
             'note' => $validated['note'] ?? null,
             'status' => 'PENDING',
         ]);
+
+        // Send emails
+        try {
+            // Email to client
+            Mail::to($reservation->email)->send(new ReservationReceived($reservation));
+            
+            // Email to admin
+            $adminEmail = env('ADMIN_EMAIL', 'admin@example.com');
+            Mail::to($adminEmail)->send(new NewReservationAdmin($reservation));
+        } catch (\Exception $e) {
+            // Log error but don't fail the reservation
+            \Log::error('Email sending failed: ' . $e->getMessage());
+        }
 
         return response()->json($reservation, 201);
     }

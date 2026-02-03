@@ -1,4 +1,5 @@
 import BookingSection from '../components/BookingSection';
+import Gallery from '../components/Gallery';
 import Image from 'next/image';
 import { Check, Info, Shield, Truck, Wind, Droplets, Zap, Coffee, Tent, Music, Wifi } from 'lucide-react';
 
@@ -6,11 +7,11 @@ export default function Home() {
     return (
         <main className="min-h-screen bg-gray-50 text-gray-800 font-sans">
             {/* Hero Section */}
-            <header className="relative bg-gray-900 text-white py-32 px-4 text-center overflow-hidden">
-                <div className="absolute inset-0 z-0 opacity-60">
+            <header className="relative bg-gray-900 text-white min-h-screen flex items-center justify-center px-4 text-center overflow-hidden">
+                <div className="absolute inset-0 z-0 opacity-70">
                     <Image
-                        src="/images/outside-priroda-na-vysku.jpeg"
-                        alt="Rimor EVO 69 Plus v přírodě"
+                        src="/images/outside-parkoviste-2.jpeg"
+                        alt="Moderní obytný vůz Rimor EVO 69 Plus"
                         fill
                         className="object-cover"
                         priority
@@ -18,10 +19,10 @@ export default function Home() {
                 </div>
                 <div className="relative z-10 max-w-4xl mx-auto">
                     <h1 className="text-4xl md:text-7xl font-bold mb-6 drop-shadow-lg">
-                        Rimor EVO 69 Plus
+                        Vaše dovolená na kolech
                     </h1>
                     <p className="text-xl md:text-3xl mb-10 drop-shadow-md">
-                        Váš domov na kolech pro nezapomenutelné zážitky.
+                        Komfortní obytný vůz pro nezapomenutelné zážitky s rodinou
                     </p>
                     <a
                         href="#rezervace"
@@ -108,31 +109,7 @@ export default function Home() {
             </section>
 
             {/* Gallery Section */}
-            <section className="bg-white py-20 px-4">
-                <div className="max-w-7xl mx-auto">
-                    <h2 className="text-3xl font-bold mb-12 text-center">Galerie vozu</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <div className="relative h-64 rounded-xl overflow-hidden shadow-md group">
-                            <Image src="/images/outside-u-vody.jpeg" alt="Exteriér u vody" fill className="object-cover transition duration-300 group-hover:scale-110" />
-                        </div>
-                        <div className="relative h-64 rounded-xl overflow-hidden shadow-md group">
-                            <Image src="/images/sezeni.jpeg" alt="Interiér sezení" fill className="object-cover transition duration-300 group-hover:scale-110" />
-                        </div>
-                        <div className="relative h-64 rounded-xl overflow-hidden shadow-md group">
-                            <Image src="/images/kuchynka.jpeg" alt="Kuchyňka" fill className="object-cover transition duration-300 group-hover:scale-110" />
-                        </div>
-                        <div className="relative h-64 rounded-xl overflow-hidden shadow-md group">
-                            <Image src="/images/loznice.jpeg" alt="Hlavní spaní" fill className="object-cover transition duration-300 group-hover:scale-110" />
-                        </div>
-                        <div className="relative h-64 rounded-xl overflow-hidden shadow-md group">
-                            <Image src="/images/koupelna.jpeg" alt="Koupelna" fill className="object-cover transition duration-300 group-hover:scale-110" />
-                        </div>
-                        <div className="relative h-64 rounded-xl overflow-hidden shadow-md group">
-                            <Image src="/images/outside-parkoviste.jpeg" alt="Boční pohled" fill className="object-cover transition duration-300 group-hover:scale-110" />
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <Gallery />
 
             {/* Pricing Section */}
             <section className="py-20 px-4 max-w-6xl mx-auto">
@@ -181,7 +158,7 @@ export default function Home() {
                                     </tr>
                                 </tbody>
                             </table>
-                            <div className="mt-6 text-xs text-gray-500 bg-gray-50 p-4 rounded">
+                            <div className="mt-6 text-sm text-gray-500 bg-gray-50 p-4 rounded">
                                 <p><strong>Limit km:</strong> 1 500 km / týden (nadlimit 10 Kč/km).</p>
                                 <p className="mt-1"><strong>Sleva:</strong> 10 % při pronájmu nad 10 dní.</p>
                                 <p className="mt-1"><strong>Servisní poplatek:</strong> 1 500 Kč (jednorázově).</p>
@@ -196,28 +173,56 @@ export default function Home() {
                         </h3>
                         <ul className="space-y-3 text-sm text-gray-700">
                             <li className="flex justify-between border-b border-dashed pb-2">
+                                <span>Skříňový přívěs 250 × 150</span>
+                                <span className="font-semibold">500 Kč</span>
+                            </li>
+                            <li className="flex justify-between border-b border-dashed pb-2">
                                 <span>Skútr Honda PCX 125</span>
-                                <span className="font-semibold">600 Kč / den</span>
-                            </li>
-                            <li className="flex justify-between border-b border-dashed pb-2">
-                                <span>Skříňový přívěs</span>
-                                <span className="font-semibold">500 Kč / den</span>
-                            </li>
-                            <li className="flex justify-between border-b border-dashed pb-2">
-                                <span>Elektrokolo (ks)</span>
-                                <span className="font-semibold">400 Kč / den</span>
+                                <span className="font-semibold">600 Kč</span>
                             </li>
                             <li className="flex justify-between border-b border-dashed pb-2">
                                 <span>Elektrokoloběžka (ks)</span>
-                                <span className="font-semibold">200 Kč / den</span>
+                                <span className="font-semibold">200 Kč</span>
+                            </li>
+                            <li className="flex justify-between border-b border-dashed pb-2">
+                                <span>Elektrokolo (ks)</span>
+                                <span className="font-semibold">400 Kč</span>
                             </li>
                             <li className="flex justify-between border-b border-dashed pb-2">
                                 <span>Elektrocentrála 3kW</span>
-                                <span className="font-semibold">200 Kč / den</span>
+                                <span className="font-semibold">200 Kč</span>
                             </li>
                             <li className="flex justify-between border-b border-dashed pb-2">
-                                <span>Gril / Projektor</span>
-                                <span className="font-semibold">od 100 Kč / den</span>
+                                <span>Kempingový set (stůl + 4 židle)</span>
+                                <span className="font-semibold">200 Kč</span>
+                            </li>
+                            <li className="flex justify-between border-b border-dashed pb-2">
+                                <span>Gril (elektrický / na dřevěné uhlí)</span>
+                                <span className="font-semibold">100 Kč</span>
+                            </li>
+                            <li className="flex justify-between border-b border-dashed pb-2">
+                                <span>Kávovar Tchibo Cafissimo</span>
+                                <span className="font-semibold">50 Kč</span>
+                            </li>
+                            <li className="flex justify-between border-b border-dashed pb-2">
+                                <span>Kávové kapsle</span>
+                                <span className="font-semibold">10 Kč</span>
+                            </li>
+                            <li className="flex justify-between border-b border-dashed pb-2">
+                                <span>Koberec před obytný vůz 400 × 250</span>
+                                <span className="font-semibold">100 Kč</span>
+                            </li>
+                            <li className="flex justify-between border-b border-dashed pb-2">
+                                <span>Nafukovací předstan 400 × 250</span>
+                                <span className="font-semibold">400 Kč</span>
+                            </li>
+                            <li className="flex justify-between border-b border-dashed pb-2">
+                                <span>Kempingová kuchyňka</span>
+                                <span className="font-semibold">100 Kč</span>
+                            </li>
+                            <li className="flex justify-between border-b border-dashed pb-2">
+                                <span>Projektor + plátno</span>
+                                <span className="font-semibold">200 Kč</span>
                             </li>
                         </ul>
                         <div className="mt-6 bg-blue-50 p-4 rounded-xl text-blue-800 text-sm">
@@ -250,9 +255,8 @@ export default function Home() {
                         <h3 className="text-white font-bold text-lg mb-4">Kontakt</h3>
                         <ul className="space-y-2 text-sm">
                             <li>Petr Panýrek</li>
-                            <li>Telefon: +420 123 456 789</li>
-                            <li>Email: info@karavan-panyrek.cz</li>
-                            <li>Lokace: Praha / Střední Čechy</li>
+                            <li>+420 608 177 772</li>
+                            <li>Plzeň, Západní Čechy</li>
                         </ul>
                     </div>
                     <div>
@@ -260,7 +264,6 @@ export default function Home() {
                         <ul className="space-y-2 text-sm">
                             <li><a href="#" className="hover:text-white transition">Domů</a></li>
                             <li><a href="#rezervace" className="hover:text-white transition">Rezervovat</a></li>
-                            <li><a href="#" className="hover:text-white transition">Všeobecné podmínky</a></li>
                         </ul>
                     </div>
                 </div>
