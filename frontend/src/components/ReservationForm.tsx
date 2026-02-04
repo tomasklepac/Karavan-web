@@ -144,6 +144,9 @@ export default function ReservationForm({ from, to, onSuccess, onCancel }: Reser
             <p className="text-sm text-gray-600 mb-4">
                 Termín: <strong>{from.toLocaleDateString()}</strong> - <strong>{to.toLocaleDateString()}</strong>
                 <span className="block mt-1">Počet nocí: <strong>{numDays}</strong></span>
+                <span className="block mt-2 text-xs text-gray-500">
+                    Vyzvednutí od 15:00, vrácení do 10:00.
+                </span>
             </p>
 
             {/* Price Estimate */}

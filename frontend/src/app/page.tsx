@@ -8,7 +8,7 @@ export default function Home() {
         <main className="min-h-screen bg-gray-50 text-gray-800 font-sans">
             {/* Hero Section */}
             <header className="relative bg-gray-900 text-white min-h-screen flex items-center justify-center px-4 text-center overflow-hidden">
-                <div className="absolute inset-0 z-0 opacity-70">
+                <div className="absolute inset-0 z-0 opacity-50">
                     <Image
                         src="/images/outside-parkoviste-2.jpeg"
                         alt="Moderní obytný vůz Rimor EVO 69 Plus"
@@ -19,12 +19,9 @@ export default function Home() {
                 </div>
                 <div className="relative z-10 max-w-4xl mx-auto">
                     <h1 className="text-4xl md:text-7xl font-bold mb-6 drop-shadow-lg">
-                        Půjčovna karavanů Plzeň<br />
-                        <span className="block mt-2 text-2xl md:text-5xl font-medium">Vaše dovolená na kolech</span>
+                        Váš rodinný karavan na cesty<br />
+                        <span className="block mt-4 text-xl md:text-3xl font-medium opacity-90">Vyražte za dobrodružstvím s plně vybaveným vozem</span>
                     </h1>
-                    <p className="text-xl md:text-3xl mb-10 drop-shadow-md">
-                        Komfortní obytný vůz pro nezapomenutelné zážitky s rodinou
-                    </p>
                     <a
                         href="#rezervace"
                         className="inline-block bg-yellow-500 hover:bg-yellow-400 text-gray-900 font-bold py-4 px-10 rounded-full transition shadow-lg text-lg transform hover:scale-105"
@@ -164,6 +161,14 @@ export default function Home() {
                                 <p className="mt-1"><strong>Sleva:</strong> 10 % při pronájmu nad 10 dní.</p>
                                 <p className="mt-1"><strong>Servisní poplatek:</strong> 1 500 Kč (jednorázově).</p>
                             </div>
+
+                            <div className="mt-4 bg-blue-50 p-4 rounded text-blue-900">
+                                <p className="text-lg font-bold mb-1">Časy předání</p>
+                                <p className="text-base">
+                                    <strong>Vyzvednutí:</strong> po 15:00 hod.<br />
+                                    <strong>Vrácení:</strong> do 10:00 hod.
+                                </p>
+                            </div>
                         </div>
                     </div>
 
@@ -257,6 +262,7 @@ export default function Home() {
                         <ul className="space-y-2 text-sm">
                             <li>Petr Panýrek</li>
                             <li>+420 608 177 772</li>
+                            <li><a href="mailto:atripo-truhlarstvi@seznam.cz" className="hover:text-white transition">atripo-truhlarstvi@seznam.cz</a></li>
                             <li>Plzeň, Západní Čechy</li>
                         </ul>
                     </div>
