@@ -19,7 +19,8 @@ export default function Home() {
                 </div>
                 <div className="relative z-10 max-w-4xl mx-auto">
                     <h1 className="text-4xl md:text-7xl font-bold mb-6 drop-shadow-lg">
-                        Vaše dovolená na kolech
+                        Půjčovna karavanů Plzeň<br />
+                        <span className="block mt-2 text-2xl md:text-5xl font-medium">Vaše dovolená na kolech</span>
                     </h1>
                     <p className="text-xl md:text-3xl mb-10 drop-shadow-md">
                         Komfortní obytný vůz pro nezapomenutelné zážitky s rodinou
