@@ -22,6 +22,12 @@
             <div class="highlight">
                 <p style="margin: 0; font-size: 18px;"><strong>Vaše rezervace byla potvrzena!</strong></p>
             </div>
+
+            <p>Bezplatné zrušení rezervace je možné do <strong>{{ $freeCancelDate->format('d.m.Y') }}</strong>.</p>
+            <p style="font-size: 13px; color: #666;">
+                * Při zrušení méně než 30 dní předem vracíme 50 % zálohy.<br>
+                * Při zrušení méně než 7 dní předem se záloha nevrací.
+            </p>
             
             <h3>Detail rezervace:</h3>
             <ul>

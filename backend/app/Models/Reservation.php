@@ -14,6 +14,7 @@ class Reservation extends Model
         'phone',
         'note',
         'status',
+        'cancel_token',
     ];
 
     protected $casts = [

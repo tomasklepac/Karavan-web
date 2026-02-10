@@ -43,7 +43,7 @@ export default function Home() {
                         <div className="bg-white p-8 rounded-2xl shadow-sm space-y-4">
                             <div className="flex justify-between border-b pb-2">
                                 <span className="text-gray-600">Vozidlo</span>
-                                <span className="font-semibold">Rimor EVO 69 Plus (2023)</span>
+                                <span className="font-semibold">Rimor EVO 69 Plus (2025)</span>
                             </div>
                             <div className="flex justify-between border-b pb-2">
                                 <span className="text-gray-600">Motor</span>
@@ -59,7 +59,7 @@ export default function Home() {
                             </div>
                             <div className="flex justify-between border-b pb-2">
                                 <span className="text-gray-600">Řidičák</span>
-                                <span className="font-semibold">Skupina B (do 3.5t)</span>
+                                <span className="font-semibold">Skupina B (min. 3 roky), věk 21+ let</span>
                             </div>
                             <div className="text-sm text-gray-500 mt-4">
                                 <p>Emisní norma EURO 6, dálniční známka v ceně.</p>
@@ -113,9 +113,28 @@ export default function Home() {
             <section className="py-20 px-4 max-w-6xl mx-auto">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl font-bold mb-4">Ceník pronájmu</h2>
-                    <p className="text-gray-600 max-w-2xl mx-auto">
-                        Transparentní ceny bez skrytých poplatků. Vratná kauce 30 000 Kč se platí týden předem.
-                    </p>
+
+                    <div className="mt-8 bg-blue-50 p-6 rounded-xl text-left max-w-4xl mx-auto border border-blue-100">
+                        <h3 className="text-xl font-bold mb-4 text-blue-900">Platební a storno podmínky</h3>
+                        <div className="grid md:grid-cols-2 gap-8">
+                            <div>
+                                <h4 className="font-bold text-blue-800 mb-2">Platba</h4>
+                                <ul className="space-y-2 text-sm text-gray-700">
+                                    <li><strong>Záloha 50 %:</strong> Splatná do 3 dnů od potvrzení rezervace.</li>
+                                    <li><strong>Doplatek 50 %:</strong> Splatný nejpozději 7 dní před převzetím vozu.</li>
+                                    <li><strong>Kauce:</strong> 30 000 Kč (vratná) se skládá předem na účet.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 className="font-bold text-blue-800 mb-2">Storno podmínky</h4>
+                                <ul className="space-y-2 text-sm text-gray-700">
+                                    <li><strong>Více než 30 dní předem:</strong> Zdarma (vracíme 100 % zálohy).</li>
+                                    <li><strong>30–7 dní předem:</strong> Vracíme 50 % uhrazené zálohy.</li>
+                                    <li><strong>Méně než 7 dní předem:</strong> Záloha se nevrací (storno 100 %).</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-12">

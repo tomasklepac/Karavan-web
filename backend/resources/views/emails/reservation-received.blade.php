@@ -32,6 +32,12 @@
             <h3>Vaše poznámka:</h3>
             <div style="background: white; padding: 15px; border: 1px solid #e5e7eb; border-radius: 5px; white-space: pre-line;">{{ $reservation->note }}</div>
             @endif
+
+            <div style="margin: 30px 0; text-align: center;">
+                <p>Pokud jste si rezervaci rozmysleli, můžete ji zrušit kliknutím na tlačítko níže:</p>
+                <a href="{{ route('reservations.cancel', ['token' => $reservation->cancel_token]) }}" style="display: inline-block; padding: 10px 20px; background: #ef4444; color: white; text-decoration: none; border-radius: 5px;">Zrušit rezervaci</a>
+                <p style="font-size: 12px; color: #666; margin-top: 5px;">* Tlačítko je funkční pouze dokud není rezervace potvrzena.</p>
+            </div>
             
             <p>Brzy Vás budeme kontaktovat s potvrzením a dalšími informacemi.</p>
             

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\ReservationReceived;
 use App\Mail\NewReservationAdmin;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 
 class ReservationController extends Controller
 {
@@ -85,6 +86,7 @@ class ReservationController extends Controller
             'phone' => $validated['phone'],
             'note' => $validated['note'] ?? null,
             'status' => 'PENDING',
+            'cancel_token' => Str::random(32),
         ]);
 
         // Send emails
@@ -101,5 +103,32 @@ class ReservationController extends Controller
         }
 
         return response()->json($reservation, 201);
+    }
+
+    /**
+     * Cancel reservation via token (from email link)
+     */
+    public function cancelByToken($token)
+    {
+        $reservation = Reservation::where('cancel_token', $token)->first();
+
+        if (!$reservation) {
+            return view('reservation.cancelled', ['status' => 'error', 'message' => 'Neplatný odkaz pro zrušení rezervace.']);
+        }
+
+        if ($reservation->status === 'CANCELED') {
+            return view('reservation.cancelled', ['status' => 'info', 'message' => 'Tato rezervace již byla zrušena.']);
+        }
+
+        if ($reservation->status !== 'PENDING') {
+            return view('reservation.cancelled', ['status' => 'error', 'message' => 'Tuto rezervaci již nelze zrušit online. Kontaktujte nás prosím telefonicky.']);
+        }
+
+        $reservation->update(['status' => 'CANCELED']);
+
+        // Optional: Notify admin about cancellation (could reuse existing mail logic or add new one)
+        // For MVP we just cancel it.
+
+        return view('reservation.cancelled', ['status' => 'success', 'message' => 'Rezervace byla úspěšně zrušena.']);
     }
 }

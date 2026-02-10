@@ -21,6 +21,9 @@ class ReservationConfirmed extends Mailable
     public function build()
     {
         return $this->subject('Rezervace potvrzena!')
-                    ->view('emails.reservation-confirmed');
+                    ->view('emails.reservation-confirmed')
+                    ->with([
+                        'freeCancelDate' => $this->reservation->from->copy()->subDays(30),
+                    ]);
     }
 }

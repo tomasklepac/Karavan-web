@@ -7,6 +7,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/reservations/cancel/{token}', [\App\Http\Controllers\ReservationController::class, 'cancelByToken'])->name('reservations.cancel');
+
 // Admin routes
 Route::prefix('admin')->group(function () {
     Route::get('/login', [AdminController::class, 'showLogin'])->name('admin.login');
